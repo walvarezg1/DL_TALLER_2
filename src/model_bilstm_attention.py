@@ -12,6 +12,8 @@ class Attention(Layer):
         context = weights * inputs
         return tf.reduce_sum(context, axis=1)
 
+custom_objects = {'Attention': Attention}
+
 def build_bilstm_attention(vocab_size=10000, embedding_dim=64, max_length=100):
     inputs = Input(shape=(max_length,))
     x = Embedding(vocab_size, embedding_dim)(inputs)
